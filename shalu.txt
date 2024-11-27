@@ -1,0 +1,93 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+function Home() {
+  return (
+    <div className="container mx-auto text-center mt-10">
+      <h1 className="text-4xl font-bold">Welcome to CarRental</h1>
+      <p className="mt-4 text-gray-600">
+        Find the perfect car for your next adventure!
+      </p>
+      <Link to="/cars" className="mt-6 inline-block bg-blue-500 text-white px-6 py-3 rounded">
+        View Cars
+      </Link>
+    </div>
+  );
+}
+
+export default Home;
+
+
+---
+
+Cars.js
+
+Car listing page.
+
+import React from 'react';
+import CarCard from '../components/CarCard';
+
+const carList = [
+  {
+    name: 'Sedan',
+    description: 'A comfortable sedan for city drives.',
+    price: 50,
+    image: 'https://via.placeholder.com/400x200',
+  },
+  {
+    name: 'SUV',
+    description: 'A spacious SUV for family trips.',
+    price: 80,
+    image: 'https://via.placeholder.com/400x200',
+  },
+];
+
+function Cars() {
+  return (
+    <div className="container mx-auto mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+      {carList.map((car, index) => (
+        <CarCard key={index} car={car} />
+      ))}
+    </div>
+  );
+}
+
+export default Cars;
+
+
+---
+
+Booking.js
+
+Booking form page.
+
+import React from 'react';
+
+function Booking() {
+  return (
+    <div className="container mx-auto mt-10">
+      <h1 className="text-2xl font-bold">Book Your Car</h1>
+      <form className="mt-6 space-y-4">
+        <div>
+          <label className="block text-gray-700">Name</label>
+          <input type="text" className="border p-2 w-full" />
+        </div>
+        <div>
+          <label className="block text-gray-700">Car</label>
+          <select className="border p-2 w-full">
+            <option>Sedan</option>
+            <option>SUV</option>
+          </select>
+        </div>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded">
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default Booking;
+
+
+---
